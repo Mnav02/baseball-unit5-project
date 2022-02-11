@@ -15,4 +15,4 @@ f d b f d b f e f e e e e f . .
 f f f f f f f f f f f f e f . . 
 . . . . . . . . . f c d d f . . 
 . . . . . . . . . . f f f f . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":"urM5Go?tnS(KnvE1fuI1"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="s,$4~GR54l8pzTrq_+Un"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement></block></xml>
+`</field><data>{"commentRefs":[],"fieldData":{"img":"urM5Go?tnS(KnvE1fuI1"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="s,$4~GR54l8pzTrq_+Un"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="gamesetbackgroundcolor" id="auGHq^!s[`NU+4V~Qd!)"><value name="color"><shadow type="colorindexpicker" id="sx+M+)eK{O^Q1~[Mc2{("><field name="index">6</field></shadow></value></block></next></block></statement></block></xml>

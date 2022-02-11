@@ -16,3 +16,4 @@ let mySprite = sprites.create(img`
     . . . . . . . . . f c d d f . . 
     . . . . . . . . . . f f f f . . 
     `, SpriteKind.Player)
+scene.setBackgroundColor(6)
