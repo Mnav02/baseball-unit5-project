@@ -1,3 +1,8 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeLifeBy(-1)
+})
+let monkey: Sprite = null
 let guess = 0
 let value = randint(1, 3)
 game.splash("choose the correct number to play the game")
@@ -147,3 +152,30 @@ scene.setBackgroundImage(img`
     `)
 controller.moveSprite(car)
 car.setStayInScreen(true)
+info.setLife(3)
+color.setColor(1, color.rgb(125, 53, 255))
+game.onUpdateInterval(1000, function () {
+    info.changeScoreBy(1)
+})
+game.onUpdateInterval(500, function () {
+    monkey = sprites.create(img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . c d f d d f d e e f f . . . . 
+        . c d f d d f d e e d d f . . . 
+        c d e e d d d d e e b d c . . . 
+        c d d d d c d d e e b d c . . . 
+        c c c c c d d e e e f c . . . . 
+        . f d d d d e e e f f . . . . . 
+        . . f f f f f e e e e f . . . . 
+        . . . . f f e e e e e e f . f f 
+        . . . f e e f e e f e e f . e f 
+        . . f e e f e e f e e e f . e f 
+        . f b d f d b f b b f e f f e f 
+        . f d d f d d f d d b e f f f f 
+        . . f f f f f f f f f f f f f . 
+        `, SpriteKind.Enemy)
+    monkey.setVelocity(-100, 0)
+    monkey.setPosition(160, randint(0, 120))
+})
