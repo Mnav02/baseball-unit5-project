@@ -1,9 +1,13 @@
+function music2 () {
+    music.playMelody("D D A A B B A A ", 120)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
 })
 let monkey: Sprite = null
 let guess = 0
+music2()
 let value = randint(1, 3)
 game.splash("choose the correct number to play the game")
 while (guess != value) {
