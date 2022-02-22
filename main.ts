@@ -4,8 +4,13 @@ function music2 () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
+    for (let index = 0; index < 4; index++) {
+        let list: number[] = []
+        car.sayText(list[randint(0, list.length - 1)], 500, false)
+    }
 })
 let monkey: Sprite = null
+let car: Sprite = null
 let guess = 0
 music2()
 let value = randint(1, 3)
@@ -14,7 +19,7 @@ while (guess != value) {
     guess = parseFloat(game.askForString("whats your guess", 1))
 }
 game.splash("nice")
-let car = sprites.create(img`
+car = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . 3 3 3 3 3 3 3 3 . . . . 
     . . . 3 d 3 3 3 3 3 3 c 3 . . . 
@@ -158,6 +163,12 @@ controller.moveSprite(car)
 car.setStayInScreen(true)
 info.setLife(3)
 color.setColor(1, color.rgb(125, 53, 255))
+let text_list = [
+"GOOOOO",
+"Turn",
+"watch out",
+"OW"
+]
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
