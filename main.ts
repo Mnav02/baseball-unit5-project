@@ -1,8 +1,17 @@
+function doSomething (text: string) {
+    text_list = [
+    "GOOOOO",
+    "Turn",
+    "watch out",
+    "OW"
+    ]
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
     for (let index = 0; index < 4; index++) {
         car.sayText(text_list[randint(0, text_list.length - 1)], 500, false)
+        doSomething("text")
     }
 })
 let monkey: Sprite = null
@@ -159,12 +168,6 @@ controller.moveSprite(car)
 car.setStayInScreen(true)
 info.setLife(3)
 color.setColor(1, color.rgb(125, 53, 255))
-text_list = [
-"GOOOOO",
-"Turn",
-"watch out",
-"OW"
-]
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
