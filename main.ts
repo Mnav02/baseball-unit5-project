@@ -5,10 +5,12 @@ function doSomething (text: string) {
     "watch out",
     "OW"
     ]
+    return text
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
+    car.startEffect(effects.fire, 1000)
     for (let index = 0; index < 4; index++) {
         car.sayText(text_list[randint(0, text_list.length - 1)], 500, false)
         doSomething("text")
@@ -19,29 +21,11 @@ let text_list: string[] = []
 let car: Sprite = null
 let guess = 0
 let value = randint(1, 3)
-game.splash("choose the correct number to play the game")
+game.splash("there is a problem guess the correct number to continue")
 while (guess != value) {
     guess = parseFloat(game.askForString("whats your guess", 1))
 }
 game.splash("nice")
-car = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . 3 3 3 3 3 3 3 3 . . . . 
-    . . . 3 d 3 3 3 3 3 3 c 3 . . . 
-    . . 3 c d 3 3 3 3 3 3 c c 3 . . 
-    . 3 c c d d d d d d 3 c c d 3 d 
-    . 3 c 3 a a a a a a a b c d 3 3 
-    . 3 3 a b b a b b b a a b d 3 3 
-    . 3 a b b b a b b b b a 3 3 3 3 
-    . a a 3 3 3 a 3 3 3 3 3 a 3 3 3 
-    . a a a a a a f a a a f a 3 d d 
-    . a a a a a a f a a f a a a 3 d 
-    . a a a a a a f f f a a a a a a 
-    . a f f f f a a a a f f f a a a 
-    . . f f f f f a a f f f f f a . 
-    . . . f f f . . . . f f f f . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999111111111119999999999999999999999999999999999999991111999999999999999999999999999999999999999999111111111111
@@ -164,6 +148,24 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
+car = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 3 3 3 3 3 3 3 3 . . . . 
+    . . . 3 d 3 3 3 3 3 3 c 3 . . . 
+    . . 3 c d 3 3 3 3 3 3 c c 3 . . 
+    . 3 c c d d d d d d 3 c c d 3 d 
+    . 3 c 3 a a a a a a a b c d 3 3 
+    . 3 3 a b b a b b b a a b d 3 3 
+    . 3 a b b b a b b b b a 3 3 3 3 
+    . a a 3 3 3 a 3 3 3 3 3 a 3 3 3 
+    . a a a a a a f a a a f a 3 d d 
+    . a a a a a a f a a f a a a 3 d 
+    . a a a a a a f f f a a a a a a 
+    . a f f f f a a a a f f f a a a 
+    . . f f f f f a a f f f f f a . 
+    . . . f f f . . . . f f f f . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
 controller.moveSprite(car)
 car.setStayInScreen(true)
 info.setLife(3)
@@ -171,7 +173,7 @@ color.setColor(1, color.rgb(125, 53, 255))
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
-game.onUpdateInterval(500, function () {
+game.onUpdateInterval(800, function () {
     monkey = sprites.create(img`
         . . . . f f f f f . . . . . . . 
         . . . f e e e e e f . . . . . . 
